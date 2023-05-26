@@ -1,0 +1,1 @@
+SPIVUtils is a python package intended to deliver the necessarie tools to work with synthetic PIV image data in machine learning and other applications.

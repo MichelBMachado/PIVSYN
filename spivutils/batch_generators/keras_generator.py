@@ -1,8 +1,11 @@
+#-----------------------------------------------------------------------------------
+# REQUIRED PACKAGES
+#-----------------------------------------------------------------------------------
 from keras.utils import Sequence
 from numpy import ceil
 from numpy import sqrt
 
-class keras_generator(Sequence) :
+class batch_data(Sequence) :
 	"""A class to provide a custom keras generator with batching, normalization and velocity scheeme selection"""
 	  
 	def __init__(self, input, output, batch_size, normalize = True, velocity = 'Components') :
@@ -34,7 +37,7 @@ class keras_generator(Sequence) :
 		holder_x = self.input[idx * self.batch_size : (idx + 1) * self.batch_size]
 		holder_y = self.output[idx * self.batch_size : (idx + 1) * self.batch_size]
 
-		if self.normalization == True:
+		if self.normalize == True:
 			batch_x = self.normalization(holder_x)
 		else:
 			batch_x = holder_x

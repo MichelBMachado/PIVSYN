@@ -1,1 +1,0 @@
-PIVSYN is a library

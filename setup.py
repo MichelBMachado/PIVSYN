@@ -1,19 +1,24 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
-def readme():
-    with open('README.rst') as f:
-        return f.read()
+
+with open('README.md', 'r') as f:
+    description = f.read()
+    f.close
+    
+with open('requirements.txt', 'r') as f:
+    requirements = f.read().splitlines()
+    f.close
 
 setup(
-      name = 'pivsyn',
+      name = 'SPIVUtils',
       version = '0.0.1',
-      description = 'Particle image velocimetry synthetic dataset tools',
-      url = '',
+      description = description,
+      url = 'https://github.com/MichelBMachado/SPIVUtils',
       author = 'Michel Bernardino Machado',
       author_email = 'michelbernardinomachado@gmail.com',
       license = 'MIT',
-      packages = ['pivsyn'],
-      install_requires = ['numpy'],
+      packages = find_packages(),
+      install_requires = requirements,
       include_package_data = True,
       zip_safe = False
 )
