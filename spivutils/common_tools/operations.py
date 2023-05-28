@@ -8,8 +8,7 @@
 #-----------------------------------------------------------------------------------
 # REQUIRED PACKAGES
 #-----------------------------------------------------------------------------------
-from numpy import sqrt
-from cv2 import threshold, THRESH_BINARY
+from numpy import sqrt, where
 
 #-----------------------------------------------------------------------------------
 # CODE ROUTINES
@@ -29,7 +28,7 @@ def thresholding(input_data):
     """
     
     """
-    output_data = threshold(input_data, 127, 255, THRESH_BINARY)[1]
+    output_data = where(input_data > 127, 255, 0)
 
     return output_data
 
