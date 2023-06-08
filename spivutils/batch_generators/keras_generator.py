@@ -9,8 +9,10 @@
 # REQUIRED PACKAGES
 #-----------------------------------------------------------------------------------
 from keras.utils import Sequence
+from keras.backend import clear_session
 from numpy import ceil
 from ..common_tools.preprocessors import preprocess_data
+import gc
 
 #-----------------------------------------------------------------------------------
 # CODE ROUTINES
@@ -57,14 +59,15 @@ class batch_data(Sequence):
 		self.y_preprocessor.add_operation(operation)
 	
 	#===============================================================================
-	def __getitem__(self, idx):
+	def __getitem__(self, index):
 		"""
 		Future docstring
 		"""
-		holder_x = self.x[idx * self.batch_size : (idx + 1) * self.batch_size]
-		holder_y = self.y[idx * self.batch_size : (idx + 1) * self.batch_size]
+		holder_x = self.x[index * self.batch_size : (index + 1) * self.batch_size]
+		holder_y = self.y[index * self.batch_size : (index + 1) * self.batch_size]
 
 		batch_x = self.x_preprocessor.preprocess_batch(holder_x)
 		batch_y = self.y_preprocessor.preprocess_batch(holder_y)
 
 		return batch_x, batch_y
+	
